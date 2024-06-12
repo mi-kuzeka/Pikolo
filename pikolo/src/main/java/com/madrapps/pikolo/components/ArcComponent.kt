@@ -32,7 +32,6 @@ internal abstract class ArcComponent(
     private val matrix = Matrix()
     private lateinit var shader: Shader
     private var innerCircleArcReference: RectF? = null
-    private val borderColor = floatArrayOf(0f, 0.8f, 1f)
 
     /**
      * This is the max value of the component. For now the min value is taken as 0
