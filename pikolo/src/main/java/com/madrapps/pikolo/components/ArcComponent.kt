@@ -1,10 +1,18 @@
 package com.madrapps.pikolo.components
 
-import android.graphics.*
-import android.graphics.Color.*
+import android.graphics.Canvas
+import android.graphics.Color.BLACK
+import android.graphics.Color.WHITE
+import android.graphics.Color.blue
+import android.graphics.Color.green
+import android.graphics.Color.red
+import android.graphics.Matrix
 import android.graphics.Paint.Cap.ROUND
 import android.graphics.Paint.Style.FILL
 import android.graphics.Paint.Style.STROKE
+import android.graphics.RectF
+import android.graphics.Shader
+import android.graphics.SweepGradient
 import androidx.core.graphics.ColorUtils
 import com.madrapps.pikolo.Metrics
 import com.madrapps.pikolo.Paints
@@ -87,28 +95,21 @@ internal abstract class ArcComponent(
         }
     }
 
+    private fun getColorDarkness(color: Int): Double {
+        // The formula is from https://en.wikipedia.org/wiki/Luma_%28video%29
+        return 1 - (0.299 * red(color) + 0.587 * green(color) + 0.114 * blue(color)) / 255
+    }
+
     private fun getBorderColor(color: Int): Int {
         if (indicatorStrokeColor != 0) {
             return indicatorStrokeColor
         }
-        borderColor[0] = metrics.hue()
-        val contrastW = ColorUtils.calculateContrast(color, WHITE)
-        val contrastB = ColorUtils.calculateContrast(color, BLACK)
-        val contrastDifference = contrastB - contrastW
-        borderColor[2] = when {
-            contrastDifference > 16 -> 0f
-            contrastDifference > 10 -> 0.1f
-            contrastDifference > 6 -> 0.2f
-            contrastDifference > 4 -> 0.3f
-            contrastDifference > 2 -> 0.4f
-            contrastDifference > 0 -> 0.5f
-            contrastDifference > -2 -> 0.6f
-            contrastDifference > -4 -> 0.7f
-            contrastDifference > -8 -> 0.8f
-            contrastDifference > -12 -> 0.9f
-            else -> 1f
+        val colorDarkness = getColorDarkness(color).toFloat()
+        return if (colorDarkness >= 0.5) {
+            ColorUtils.blendARGB(color, WHITE, colorDarkness)
+        } else {
+            ColorUtils.blendARGB(color, BLACK, 0.75f - colorDarkness)
         }
-        return ColorUtils.HSLToColor(borderColor)
     }
 
     override fun getShader(): Shader {
