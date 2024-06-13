@@ -88,6 +88,7 @@ internal abstract class ArcComponent(
         var drawStroke = indicatorStrokeWidth > 0
         if (drawStroke && indicatorStrokeShadow) {
             drawStroke = false
+            indicatorPaint.isAntiAlias = true
             indicatorPaint.setShadowLayer(indicatorStrokeWidth * 2f,
                     0f, 0f, getBorderColor(color))
         }
