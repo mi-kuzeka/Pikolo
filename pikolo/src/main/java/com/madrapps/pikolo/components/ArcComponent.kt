@@ -20,9 +20,9 @@ import com.madrapps.pikolo.Paints
 internal abstract class ArcComponent(
         metrics: Metrics,
         paints: Paints,
-        private val arcLength: Float,
-        private val arcStartAngle: Float
-) : ColorComponent(metrics, paints) {
+        arcLength: Float,
+        arcStartAngle: Float
+) : ColorComponent(metrics, paints, arcLength, arcStartAngle) {
 
     protected abstract val componentIndex: Int
     abstract val noOfColors: Int
