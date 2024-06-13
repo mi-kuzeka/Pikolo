@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 def groupId = "com.github.madrapps"
 def artifactId = "pikolo"
-def libVersion = "2.0.2"
+def libVersion = "2.0.3"
 
 ext {
     GROUP_ID = groupId
