@@ -31,4 +31,6 @@ internal abstract class Metrics(var centerX: Float = 0f, var centerY: Float = 0f
     abstract fun hue(): Float
 }
 
-data class Paints(val shaderPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG), val indicatorPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG))
+data class Paints(val shaderPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG),
+                  val indicatorPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG),
+                  val previewPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG))

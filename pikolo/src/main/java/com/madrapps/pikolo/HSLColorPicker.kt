@@ -2,6 +2,7 @@ package com.madrapps.pikolo
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.core.graphics.ColorUtils
@@ -11,6 +12,7 @@ import com.madrapps.pikolo.components.hsl.HueComponent
 import com.madrapps.pikolo.components.hsl.LightnessComponent
 import com.madrapps.pikolo.components.hsl.SaturationComponent
 import com.madrapps.pikolo.listeners.OnColorSelectionListener
+import com.madrapps.pikolo.utils.ColorPickerUtils
 
 open class HSLColorPicker @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : ColorPicker(context, attrs, defStyleAttr) {
 
@@ -23,6 +25,11 @@ open class HSLColorPicker @JvmOverloads constructor(context: Context, attrs: Att
     private val hueRadiusOffset: Float
     private val saturationRadiusOffset: Float
     private val lightnessRadiusOffset: Float
+
+    private val showPreview: Boolean
+    private val previewStrokeWidth: Float
+    private val previewStrokeShadow: Boolean
+    private val previewRadius: Float
 
     override val color: Int
         get() = metrics.getColor()
@@ -70,6 +77,11 @@ open class HSLColorPicker @JvmOverloads constructor(context: Context, attrs: Att
             hueRadiusOffset = typedArray.getDimension(R.styleable.HSLColorPicker_hue_radius_offset, if (radiusOffset == 0f) dp(1f) else radiusOffset)
             saturationRadiusOffset = typedArray.getDimension(R.styleable.HSLColorPicker_saturation_radius_offset, if (radiusOffset == 0f) dp(25f) else radiusOffset)
             lightnessRadiusOffset = typedArray.getDimension(R.styleable.HSLColorPicker_lightness_radius_offset, if (radiusOffset == 0f) dp(25f) else radiusOffset)
+
+            showPreview = typedArray.getBoolean(R.styleable.HSLColorPicker_show_preview, true)
+            previewStrokeWidth = typedArray.getDimension(R.styleable.HSLColorPicker_preview_stroke_width, 2f)
+            previewStrokeShadow = typedArray.getBoolean(R.styleable.HSLColorPicker_preview_stroke_shadow, false)
+            previewRadius= typedArray.getDimension(R.styleable.HSLColorPicker_preview_radius, dp(50f))
         }
         typedArray.recycle()
     }
@@ -78,6 +90,33 @@ open class HSLColorPicker @JvmOverloads constructor(context: Context, attrs: Att
         hueComponent.drawComponent(canvas)
         saturationComponent.drawComponent(canvas)
         lightnessComponent.drawComponent(canvas)
+        if (showPreview) drawPreview(canvas)
+    }
+
+    private fun drawPreview(canvas: Canvas) {
+        val previewPaint = paints.previewPaint
+        previewPaint.style = Paint.Style.FILL
+
+        val color = metrics.getColor()
+        previewPaint.color = color
+        previewPaint.isAntiAlias = true
+
+        var drawStroke = previewStrokeWidth > 0
+        val borderColor = ColorPickerUtils.getBorderColor(color)
+
+        if (drawStroke && previewStrokeShadow) {
+            drawStroke = false
+            previewPaint.setShadowLayer(previewStrokeWidth * 2f,
+                    0f, 0f, borderColor)
+        }
+        canvas.drawCircle(metrics.centerX, metrics.centerY, previewRadius, previewPaint)
+
+        if (drawStroke) {
+            previewPaint.color = borderColor
+            previewPaint.style = Paint.Style.STROKE
+            previewPaint.strokeWidth = previewStrokeWidth
+            canvas.drawCircle(metrics.centerX, metrics.centerY, previewRadius, previewPaint)
+        }
     }
 
     override fun onSizeChanged(width: Int, height: Int, oldW: Int, oldH: Int) {

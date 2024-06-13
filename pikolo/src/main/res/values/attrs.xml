@@ -53,6 +53,11 @@
         <attr name="hue_radius_offset" format="dimension" />
         <attr name="saturation_radius_offset" format="dimension" />
         <attr name="lightness_radius_offset" format="dimension" />
+
+        <attr name="show_preview" format="boolean" />
+        <attr name="preview_stroke_width" format="dimension" />
+        <attr name="preview_stroke_shadow" format="boolean" />
+        <attr name="preview_radius" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="RGBColorPicker">

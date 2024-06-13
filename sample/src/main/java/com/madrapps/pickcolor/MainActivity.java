@@ -19,7 +19,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ColorPicker colorPicker;
-    private ImageView imageView;
+//    private ImageView imageView;
     private Button randomColorButton;
 
     private final Random random = new Random();
@@ -28,16 +28,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        imageView = findViewById(R.id.imageView);
+//        imageView = findViewById(R.id.imageView);
 
         colorPicker = findViewById(R.id.colorPicker);
-        colorPicker.setColorSelectionListener(new SimpleColorSelectionListener() {
-            @Override
-            public void onColorSelected(int color) {
-                // Do whatever you want with the color
-                imageView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
-            }
-        });
+//        colorPicker.setColorSelectionListener(new SimpleColorSelectionListener() {
+//            @Override
+//            public void onColorSelected(int color) {
+//                // Do whatever you want with the color
+//                imageView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
+//            }
+//        });
         colorPicker.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
         initializeColorButtons();
@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             final String hexColor = String.format("#%06X", (0xFFFFFF & color));
             randomColorButton.setText(hexColor);
             randomColorButton.setBackgroundColor(color);
-            imageView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
+//            imageView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
             colorPicker.setColor(color);
         }
         if (v instanceof ImageButton) {
             final int color = ((ColorDrawable) ((ImageButton) v).getDrawable()).getColor();
-            imageView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
+//            imageView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
             colorPicker.setColor(color);
         }
     }

@@ -51,6 +51,10 @@
         pikolo:indicator_stroke_width="2dp"
         pikolo:lightness_radius_offset="60dp"
         pikolo:saturation_radius_offset="60dp"
+        pikolo:show_preview="true"
+        pikolo:preview_stroke_width="2dp"
+        pikolo:preview_stroke_shadow="true"
+        pikolo:preview_radius="50dp"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -79,20 +83,20 @@
     <!--            tools:layout_constraintRight_creator="1"-->
     <!--            tools:layout_constraintTop_creator="1" />-->
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_circle"
-        app:layout_constraintBottom_toBottomOf="@+id/colorPicker"
-        app:layout_constraintEnd_toEndOf="@+id/colorPicker"
-        app:layout_constraintStart_toStartOf="@+id/colorPicker"
-        app:layout_constraintTop_toTopOf="@+id/colorPicker"
-        tools:ignore="ContentDescription" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:background="@drawable/bg_circle"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/colorPicker"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/colorPicker"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/colorPicker"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/colorPicker"-->
+<!--        tools:ignore="ContentDescription" />-->
 
     <ImageButton
         android:id="@+id/imageButton1"

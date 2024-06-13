@@ -13,9 +13,9 @@ import android.graphics.Paint.Style.STROKE
 import android.graphics.RectF
 import android.graphics.Shader
 import android.graphics.SweepGradient
-import androidx.core.graphics.ColorUtils
 import com.madrapps.pikolo.Metrics
 import com.madrapps.pikolo.Paints
+import com.madrapps.pikolo.utils.ColorPickerUtils
 
 internal abstract class ArcComponent(
         metrics: Metrics,
@@ -84,11 +84,11 @@ internal abstract class ArcComponent(
 
         val color = metrics.getColor()
         indicatorPaint.color = color
+        indicatorPaint.isAntiAlias = true
 
         var drawStroke = indicatorStrokeWidth > 0
         if (drawStroke && indicatorStrokeShadow) {
             drawStroke = false
-            indicatorPaint.isAntiAlias = true
             indicatorPaint.setShadowLayer(indicatorStrokeWidth * 2f,
                     0f, 0f, getBorderColor(color))
         }
@@ -102,21 +102,11 @@ internal abstract class ArcComponent(
         }
     }
 
-    private fun getColorDarkness(color: Int): Double {
-        // The formula is from https://en.wikipedia.org/wiki/Luma_%28video%29
-        return 1 - (0.299 * red(color) + 0.587 * green(color) + 0.114 * blue(color)) / 255
-    }
-
     private fun getBorderColor(color: Int): Int {
         if (indicatorStrokeColor != 0) {
             return indicatorStrokeColor
         }
-        val colorDarkness = getColorDarkness(color).toFloat()
-        return if (colorDarkness >= 0.5) {
-            ColorUtils.blendARGB(color, WHITE, colorDarkness)
-        } else {
-            ColorUtils.blendARGB(color, BLACK, 0.75f - colorDarkness)
-        }
+        return ColorPickerUtils.getBorderColor(color)
     }
 
     override fun getShader(): Shader {
