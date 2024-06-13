@@ -84,9 +84,16 @@ internal abstract class ArcComponent(
 
         val color = metrics.getColor()
         indicatorPaint.color = color
+
+        var drawStroke = indicatorStrokeWidth > 0
+        if (drawStroke && indicatorStrokeShadow) {
+            drawStroke = false
+            indicatorPaint.setShadowLayer(indicatorStrokeWidth * 2f,
+                    0f, 0f, getBorderColor(color))
+        }
         canvas.drawCircle(indicatorX, indicatorY, indicatorRadius, indicatorPaint)
 
-        if (indicatorStrokeWidth > 0) {
+        if (drawStroke) {
             indicatorPaint.color = getBorderColor(color)
             indicatorPaint.style = STROKE
             indicatorPaint.strokeWidth = indicatorStrokeWidth

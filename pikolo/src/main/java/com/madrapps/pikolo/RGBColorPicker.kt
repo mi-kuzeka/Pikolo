@@ -38,6 +38,7 @@ open class RGBColorPicker @JvmOverloads constructor(context: Context, attrs: Att
                 it.strokeWidth = typedArray.getDimension(R.styleable.RGBColorPicker_red_stroke_width, strokeWidth)
                 it.indicatorStrokeWidth = typedArray.getDimension(R.styleable.RGBColorPicker_red_indicator_stroke_width, indicatorStrokeWidth)
                 it.indicatorStrokeColor = typedArray.getColor(R.styleable.RGBColorPicker_red_indicator_stroke_color, indicatorStrokeColor)
+                it.indicatorStrokeShadow = typedArray.getBoolean(R.styleable.RGBColorPicker_red_indicator_stroke_shadow, indicatorStrokeShadow)
                 it.strokeColor = typedArray.getColor(R.styleable.RGBColorPicker_red_stroke_color, strokeColor)
                 it.indicatorRadius = typedArray.getDimension(R.styleable.RGBColorPicker_red_indicator_radius, indicatorRadius)
             }
@@ -49,6 +50,7 @@ open class RGBColorPicker @JvmOverloads constructor(context: Context, attrs: Att
                 it.strokeWidth = typedArray.getDimension(R.styleable.RGBColorPicker_green_stroke_width, strokeWidth)
                 it.indicatorStrokeWidth = typedArray.getDimension(R.styleable.RGBColorPicker_green_indicator_stroke_width, indicatorStrokeWidth)
                 it.indicatorStrokeColor = typedArray.getColor(R.styleable.RGBColorPicker_green_indicator_stroke_color, indicatorStrokeColor)
+                it.indicatorStrokeShadow = typedArray.getBoolean(R.styleable.RGBColorPicker_green_indicator_stroke_shadow, indicatorStrokeShadow)
                 it.strokeColor = typedArray.getColor(R.styleable.RGBColorPicker_green_stroke_color, strokeColor)
                 it.indicatorRadius = typedArray.getDimension(R.styleable.RGBColorPicker_green_indicator_radius, indicatorRadius)
             }
@@ -61,6 +63,7 @@ open class RGBColorPicker @JvmOverloads constructor(context: Context, attrs: Att
                 it.strokeWidth = typedArray.getDimension(R.styleable.RGBColorPicker_blue_stroke_width, config.strokeWidth)
                 it.indicatorStrokeWidth = typedArray.getDimension(R.styleable.RGBColorPicker_blue_indicator_stroke_width, indicatorStrokeWidth)
                 it.indicatorStrokeColor = typedArray.getColor(R.styleable.RGBColorPicker_blue_indicator_stroke_color, indicatorStrokeColor)
+                it.indicatorStrokeShadow = typedArray.getBoolean(R.styleable.RGBColorPicker_blue_indicator_stroke_shadow, indicatorStrokeShadow)
                 it.strokeColor = typedArray.getColor(R.styleable.RGBColorPicker_blue_stroke_color, strokeColor)
                 it.indicatorRadius = typedArray.getDimension(R.styleable.RGBColorPicker_blue_indicator_radius, indicatorRadius)
             }

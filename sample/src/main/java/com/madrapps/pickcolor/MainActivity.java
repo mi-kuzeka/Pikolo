@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 imageView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
             }
         });
+        colorPicker.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
         initializeColorButtons();
 

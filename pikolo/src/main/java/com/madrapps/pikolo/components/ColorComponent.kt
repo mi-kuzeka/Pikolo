@@ -29,6 +29,7 @@ internal abstract class ColorComponent(val metrics: Metrics,
     var indicatorRadius: Float = 0f
     var indicatorStrokeWidth: Float = 0f
     var indicatorStrokeColor: Int = 0
+    var indicatorStrokeShadow: Boolean = false
 
     var indicatorX: Float = 0f
     var indicatorY: Float = 0f

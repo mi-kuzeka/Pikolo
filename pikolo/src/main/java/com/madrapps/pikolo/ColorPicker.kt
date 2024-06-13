@@ -30,13 +30,14 @@ abstract class ColorPicker @JvmOverloads constructor(context: Context, attrs: At
         val indicatorStrokeWidth = typedArray.getDimension(R.styleable.ColorPicker_indicator_stroke_width, dp(2f))
         val strokeColor = typedArray.getColor(R.styleable.ColorPicker_stroke_color, 0)
         val indicatorStrokeColor = typedArray.getColor(R.styleable.ColorPicker_indicator_stroke_color, 0)
+        val indicatorStrokeShadow = typedArray.getBoolean(R.styleable.ColorPicker_indicator_stroke_shadow, false)
         val arcLength = typedArray.getFloat(R.styleable.ColorPicker_arc_length, 0f)
         val radiusOffset = typedArray.getDimension(R.styleable.ColorPicker_radius_offset, 0f)
 
         typedArray.recycle()
 
         config = Config(arcWidth, strokeWidth, indicatorRadius, indicatorStrokeWidth,
-                strokeColor, indicatorStrokeColor, arcLength, radiusOffset)
+                strokeColor, indicatorStrokeColor, indicatorStrokeShadow, arcLength, radiusOffset)
     }
 
     protected fun dp(value: Float): Float {
@@ -93,6 +94,7 @@ abstract class ColorPicker @JvmOverloads constructor(context: Context, attrs: At
                       val indicatorStrokeWidth: Float,
                       val strokeColor: Int,
                       val indicatorStrokeColor: Int,
+                      val indicatorStrokeShadow: Boolean,
                       val arcLength: Float,
                       val radiusOffset: Float)
 }
