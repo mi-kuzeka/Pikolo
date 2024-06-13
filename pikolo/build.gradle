@@ -53,3 +53,16 @@ repositories {
     google()
     mavenCentral()
 }
+
+tasks.register('deleteJar', Delete) {
+    delete 'libs/jars/pikolo.jar'
+}
+
+tasks.register('createJar', Copy) {
+    from('build/intermediates/bundles/release/')
+    into('libs/jars/')
+    include('classes.jar')
+    rename('classes.jar', 'pikolo.jar')
+}
+
+createJar.dependsOn(deleteJar, build)
