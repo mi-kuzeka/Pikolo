@@ -1,26 +1,19 @@
-# Pikolo
+# Forked from Pikolo
 
 An android color picker library
 
 <img src="/preview/arc-selectors.gif" alt="preview" title="preview" width="200" height="200"/><img src="/preview/preview-full.gif" alt="preview" title="preview" width="200" height="200"/><img src="/preview/rgb-picker.gif" alt="preview" title="preview" width="200" height="200"/>
 
+This is a fork from the https://github.com/Madrapps/Pikolo repository.
+In this version:
+-----
+- Added indicator movement when clicking on the arch;
+- Added the ability to display the indicator shadow;
+- Added the ability to display a color preview.
+
 Download
 -----
-
-```gradle
-repositories {
-  mavenCentral()
-}
-
-dependencies {
-  implementation 'com.github.madrapps:pikolo:2.0.2'
-}
-```
-
-Features
------
-- Includes `HSLColorPicker` and `RGBColorPicker`
-- Full customization of the various parts of the color picker (like arc length, arc position, indicator size, color, etc...) using XML attributes
+If you want to use my version, you should download the code and add the library to your project yourself
 
 Usage
 -----
@@ -37,23 +30,46 @@ colorPicker.setColorSelectionListener(new SimpleColorSelectionListener() {
 });
 ```
 
-You can take a look at the [sample](https://github.com/Madrapps/Pikolo/tree/master/sample) app to see how
+You can take a look at the [sample](https://github.com/mi-kuzeka/Pikolo/tree/master/sample) app to see how
 the color picker can be customised. There are 3 components in both pickers. You can change their properties
 together or individually. For instance, `arc_length` changes the length of the arc for all 3 components, while
 `hue_arc_length` affects only the Hue component. Various other XML attributes are as follows:<br>
 
 `arc_width` - width (thickness) of the components<br>
+
 `arc_length` - length of the components<br>
+
 `stroke_width` - width of the stroke of the components<br>
+
 `stroke_color` - stroke color of the components<br>
+
 `indicator_radius` - radius of the control indicator used to change color<br>
+
 `indicator_stroke_width` - stroke width of indicator<br>
+
 `indicator_stroke_color` - stroke color of indicator<br>
-`indicator_stroke_shadow` - shadow instead of indicator stroke.<br>
+
+`indicator_stroke_shadow` - set to true if you want to show shadow instead of indicator stroke.<br>
 For shadow effect to apply you need to add the following line when initializing colorPicker:<br>
-colorPicker.setLayerType(View.LAYER_TYPE_SOFTWARE, null);<br>
+```java
+colorPicker.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+```
+[look at the sample](https://github.com/mi-kuzeka/Pikolo/blob/master/sample/src/main/java/com/madrapps/pickcolor/MainActivity.java)<br>
+
 `radius_offset` - the offset of the components from the center of the picker<br>
 
+`show_preview` - set to true if you want a circle with a color preview to be displayed in the center<br>
+
+`preview_stroke_width` - stroke width of color preview<br>
+
+`preview_stroke_shadow` - set to true if you want to show shadow instead of preview stroke.<br>
+For shadow effect to apply you need to add the following line when initializing colorPicker:<br>
+```java
+colorPicker.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+```
+[look at the sample](https://github.com/mi-kuzeka/Pikolo/blob/master/sample/src/main/java/com/madrapps/pickcolor/MainActivity.java)<br>
+
+`preview_radius` - radius of the color preview circle
 
 License
 -----
