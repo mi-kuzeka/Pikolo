@@ -1,18 +1,15 @@
 package com.madrapps.pickcolor;
 
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.ColorUtils;
 
 import com.madrapps.pikolo.ColorPicker;
-import com.madrapps.pikolo.listeners.SimpleColorSelectionListener;
 
 import java.util.Random;
 
