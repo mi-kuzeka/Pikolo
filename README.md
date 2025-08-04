@@ -11,6 +11,8 @@ In this version:
 - Added the ability to display the indicator shadow;
 - Added the ability to display a color preview.
 
+![New Touchable Arch Preview](preview/arch-touch.gif)
+
 Download
 -----
 If you want to use my version, you should download the code and add the library to your project yourself
